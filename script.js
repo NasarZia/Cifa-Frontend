@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('closeSignin').addEventListener('click', () => closeModal('signinModal'));
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const landingPage = document.getElementById('landingPage');
     const loginBtn = document.getElementById('loginBtn');
@@ -80,9 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('signupModal').style.display = 'block';
     });
 });
-
-
-
 
 // Update placeholder with chosen file name
 const fileInput = document.getElementById('patientImage');
@@ -132,13 +128,12 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 });
 
-
-
 // Remove any existing submit button event listeners first
 const submitButton = document.getElementById('submitButton');
 const resultDiv = document.getElementById('predictionResult');
 
-// Existing code remains the same...
+// Update backend URL
+const backendUrl = "https://cifa-backend-1.onrender.com";
 
 submitButton.addEventListener('click', async (event) => {
     event.preventDefault(); // Prevent the default button behavior
@@ -157,7 +152,7 @@ submitButton.addEventListener('click', async (event) => {
     formData.append('file', file);
 
     try {
-        const response = await fetch(`http://127.0.0.1:5000/predict/${modelType}`, {
+        const response = await fetch(`${backendUrl}/predict/${modelType}`, {
             method: 'POST',
             body: formData,
         });
