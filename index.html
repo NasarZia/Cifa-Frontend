@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifa</title>
+    <link rel="icon" href="Logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .file-name-container {
+          width: 200px; /* Adjust the width to fit your design */
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: inline-block;
+        }
+        /* Optional: Show full name on hover */
+        .file-name-container:hover {
+          white-space: normal;
+          overflow: visible;
+        }
+      </style>
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#"><img src="Logo.png" alt="Cifa"></a>
+        </div>
+        <div class="navtxt">
+            <ul>
+                <li class="home"><a href="#">Home</a></li>
+                <li class="about"><a href="about.html">About</a></li>
+                <li class="contact"><a href="#" id="openContact">Contact Us</a></li>
+                <li class="signup"><a href="#" id="openSignup">Sign Up</a></li>
+                <li class="signin"><a href="#" id="openSignin">Sign In</a></li>
+            </ul>
+        </div>
+        <div class="menu-icon" id="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <div id="landingPage" class="landing-overlay">
+        <div class="landing-content">
+            <h1>Welcome to Cifa</h1>
+            <p>Your reliable companion for health diagnosis.</p>
+            <button id="loginBtn" class="btn">Sign In</button>
+            <button id="signupBtn" class="btn">Sign Up</button>
+        </div>
+    </div>
+
+    <!-- Landing Section with Background -->
+    <div class="Landing_img">
+        <div class="content">
+            <div class="tagline">Identifying<br>the cause is the<br>key to effective care.</div>
+            <div class="image-upload">
+                <label for="patientImage" class="file-upload-label" >
+                    <input type="file" id="patientImage" accept="image/jpeg, image/png">
+                    <span class="placeholder">Upload Your Image</span>
+                </label>
+                <select id="modelType" class="custom-dropdown">
+                    <option value="brain">Brain Tumor</option>
+                    <option value="oral">Oral Cancer</option>
+                </select>
+                <button id="submitButton" type="button">Submit</button>
+                <div id="predictionResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span id="closeSignup" class="close">&times;</span>
+            <h2>Welcome!</h2>
+            <h3>Sign Up</h3>
+            <form autocomplete = "on" id="signupForm">
+                <input type="text" id="username" autocomplete = "name" placeholder="Enter your name" required>
+                <input type="email" id="email" autocomplete = "email" placeholder="Enter your email" required>
+                <input type="password" id="password" autocomplete = "new-password" placeholder="Enter your password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p id="status"></p>
+        </div>
+    </div>
+
+    <!-- Signin Modal -->
+    <div id="signinModal" class="modal">
+        <div class="modal-content">
+            <span id="closeSignin" class="close">&times;</span>
+            <h2>Welcome Back!</h2>
+            <h3>Sign In</h3>
+            <form autocomplete = "on" id="signinForm">
+                <input type="email" id="signinEmail" autocomplete = "email" placeholder="Enter your email" required>
+                <input type="password" id="signinPassword" autocomplete = "current-password" placeholder="Enter your password" required>
+                <button type="submit">Sign In</button>
+            </form>
+            <p id="signinStatus"></p>
+        </div>
+    </div>
+
+    <!-- Contact Us Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span id="closeContact" class="close">&times;</span>
+            <h2>Contact Us</h2>
+            <form autocomplete="off" id="contactForm" action="https://formspree.io/f/xpwavpad" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>Cifa Healthcare</h2>
+                <p>Providing top-tier healthcare solutions to ensure your well-being. We focus on diagnosing and treating the root causes of health problems to offer effective care.</p>
+            </div>
+            <div class="footer-section links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h2>Contact Us</h2>
+                <p>Email: support@cifahealthcare.com</p>
+                <p>Phone: +91 98835 - 30390</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Cifa Healthcare | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        // Firebase SDK for Firebase v9 (Modular)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+        import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyCYjgYGms9IVtUOroSxVlUO40jmUFdTro4",
+            authDomain: "cifa-healthcare.firebaseapp.com",
+            projectId: "cifa-healthcare",
+            storageBucket: "cifa-healthcare.appspot.com",
+            messagingSenderId: "783555069520",
+            appId: "1:783555069520:web:db46b6c24393da8096b355",
+            measurementId: "G-ED6CHYZ5GW"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        // Handle user signup
+        document.getElementById('signupForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const statusElement = document.getElementById('status');
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                await setDoc(doc(db, 'users', user.uid), {
+                    username: username,
+                    email: email,
+                    createdAt: serverTimestamp()
+                });
+
+                statusElement.textContent = "Account created successfully!";
+            } catch (error) {
+                statusElement.textContent = error.message;
+            }
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,573 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.header-logo {
+    height: 40px; /* Adjust height as needed */
+    margin-right: 10px; /* Space between logo and title */
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    background-color: #0757ac; /* Light blue for medical feel */
+}
+
+.logo img {
+    height: 50px;
+}
+
+.navtxt ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navtxt ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navtxt ul li a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive Menu Icon */
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .navtxt ul {
+        display: none;
+        flex-direction: column;
+        background-color: #007bff;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navtxt.active ul {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: flex;
+        z-index: 1;
+    }
+
+    .navtxt ul li {
+        padding: 15px 0;
+    }
+
+    .navbar {
+        position: relative;
+    }
+}
+
+/* Landing Image Section */
+.Landing_img {
+    background-image: url('Landing_Image.png'); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100vh; /* Full-screen height */
+    position: relative;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.Landing_img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.3); /* Slightly dark translucent overlay (30% opacity) */
+    z-index: 1;
+}
+
+/* Content on top of background */
+.Landing_img .content {
+    position: relative;
+    z-index: 3; /* Ensure it is above the background image */
+    text-align: center;
+    color: white;
+    padding: 20px;
+    height: 100%;
+    width: 100%; /* Make it stretch to fill the Landing_img */
+    display: flex;
+    flex-direction: column; /* Allows stacking of child elements */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    
+}
+
+.tagline {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+    font-size: 70px;
+    color: white; /* Change to your desired color */
+    text-align: left; /* Align text to the left */
+    padding: 40px 30px; /* 0 padding above and below, 30px on left and right */
+    margin: 0; /* Remove margin to avoid extra space */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Optional shadow for better readability */
+    position: absolute; /* Position it relative to the parent */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+}
+
+/* Centered Image Upload Form */
+.image-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    position: relative; /* Add this */
+    z-index: 10; /* Ensure it's above the background image */
+}
+
+.file-upload-label {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 20px;
+    background-color: white;
+    cursor: pointer;
+    width: 250px; /* Match input width */
+    transition: border-color 0.3s ease;
+    width: 100%; /* Adjust based on your layout */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+/* Adjust the file upload label and dropdown */
+.file-upload-label,
+#modelType {
+    z-index: 10; /* Ensure these are above the background */
+}
+
+
+/* Change border color on hover */
+.file-upload-label:hover {
+    border-color: #1abe15; /* Change border color on hover */
+}
+
+.file-upload-label input[type="file"] {
+    display: none; /* Hide the default file input */
+}
+
+.file-upload-label .placeholder {
+    color: #afafaf; /* Light gray color */
+    font-size: 1em;
+    transition: color 0.3s;
+    top: 50%; /* Center vertically */
+    left: 10px; /* Add some left padding */
+    transform: translateY(-50%);
+}
+
+/* Change placeholder color when file is chosen */
+#patientImage:focus + .placeholder,
+#patientImage:not(:placeholder-shown) + .placeholder {
+    color: rgb(0, 0, 0); /* Change color to black when focused or file chosen */
+}
+
+/* Button Styles */
+.image-upload button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue button */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+.image-upload button:hover {
+    background-color: #1abe15; /* Darker blue on hover */
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #0757ac; /* Same as navbar color for consistency */
+    color: white;
+    padding: 40px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 20px;
+    min-width: 250px; /* Ensure it doesn’t collapse on smaller screens */
+}
+
+.footer-section h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #1abe15; /* Green underline for section headings */
+    padding-bottom: 10px;
+}
+
+.footer-section p {
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 10px 0;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #1abe15; /* Green hover effect */
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background-color: #0056b3; /* Slightly darker shade for bottom bar */
+    margin-top: 40px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+    color: white;
+}
+
+
+/* About Section Styles */
+.about-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.about-section h1 {
+    font-size: 2.5em;
+    color: #0757ac; /* Use consistent color */
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 1.2em;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background with opacity */
+}
+
+.modal-content {
+    background-color: #ffffff; /* White background */
+    margin: 15% auto; /* Centered */
+    padding: 30px; /* More padding */
+    border-radius: 10px; /* Rounded corners */
+    width: 400px; /* Increased width */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+    animation: slide-in 0.3s ease; /* Animation */
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #4CAF50; /* Green color for heading */
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #555; /* Darker grey for subheading */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 5px;
+    transition: border-color 0.3s; /* Smooth transition */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #388E3C; /* Darker green on focus */
+    outline: none; /* Remove outline */
+}
+
+button {
+    padding: 12px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #388E3C; /* Darker green on hover */
+}
+
+#status,
+#signinStatus {
+    text-align: center;
+    margin-top: 10px;
+    color: #d9534f; /* Red color for error messages */
+}
+
+
+
+
+/* Responsive Footer Adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 2em;
+    }
+
+    .content p {
+        font-size: 1.2em;
+    }
+
+    .image-upload input[type="file"], .image-upload button {
+        font-size: 0.9em;
+    }
+}
+
+.custom-dropdown {
+    padding: 10px 20px;
+    background-color: #007bff; /* Matching submit button's background */
+    color: white; /* White text to match button */
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Smooth transition */
+    margin-left: 10px;
+    width: auto;
+    min-width: 130px;
+    max-width: 250px;
+    appearance: none; /* Remove default styling */
+    font-family: 'Roboto', sans-serif;
+}
+
+.custom-dropdown:hover {
+    background-color: #1abe15; /* Darker green on hover, matching button hover */
+}
+
+
+
+.custom-dropdown option {
+    background-color: white;
+    color: #333;
+}
+
+
+
+/* Prediction result div styles */
+#prediction-result {
+    position: fixed; /* Fixed position so it stays at the top even when scrolling */
+    top: 20px; /* Adjust top position */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Offset to ensure perfect centering */
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background with some transparency */
+    color: white; /* Text color */
+    padding: 20px; /* Space inside the div */
+    border-radius: 10px; /* Rounded corners */
+    z-index: 9999; /* Make sure it's on top of other elements */
+    font-size: 18px; /* Text size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect for better visibility */
+    display: none; /* Initially hidden, will be shown dynamically */
+}
+
+
+
+/* For mobile responsiveness, you can adjust it accordingly */
+@media (max-width: 768px) {
+    #prediction-result {
+        top: 10px; /* Adjust the top space for smaller screens */
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+}
+
+/* Landing Page Overlay */
+.landing-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(194, 190, 190, 0.8); /* Dark translucent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* On top of all elements */
+    color: rgb(13, 44, 73);
+    text-align: center;
+}
+
+.landing-content h1 {
+    font-size: 70px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.landing-content p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+.landing-content .btn {
+    padding: 15px 30px;
+    font-size: 1rem;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+}
+
+.landing-content .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Blur effect for main content */
+body.blur-active .Landing_img,
+body.blur-active .navbar,
+body.blur-active footer {
+    filter: blur(8px);
+    pointer-events: none;
+}
+
+/* Prevent scrolling on body when landing page is active */
+body.no-scroll {
+    overflow: hidden;
+}
