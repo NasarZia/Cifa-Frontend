@@ -127,6 +127,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Close modals when clicking outside of them
     window.onclick = function (event) {
         if (event.target == document.getElementById('signupModal') || event.target == document.getElementById('signinModal') || event.target == document.getElementById('contactModal')) {
+            //do Nothing
+        }
+        if(event.target == document.getElementById('contactModal')){
             event.target.style.display = 'none';
         }
     };
