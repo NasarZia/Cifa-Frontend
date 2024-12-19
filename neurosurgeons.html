@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultants</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background: #f3f4f6;
+            /* Light grey background */
+            color: #333;
+            /* Dark grey text */
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: #0056b3;
+            /* Blue header text */
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Responsive grid */
+            gap: 20px;
+            /* Space between tiles */
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            /* Center the grid */
+        }
+
+        .doctor {
+            background: #ffffff;
+            /* White card background */
+            border: 1px solid #d1d5db;
+            /* Light grey border */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            /* Center content */
+        }
+
+        .doctor:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .doctor h3 {
+            margin: 10px 0;
+            color: #1d4ed8;
+            /* Darker blue for titles */
+            font-size: 1.5em;
+        }
+
+        .doctor p {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        .doctor strong {
+            color: #111827;
+            /* Slightly darker text for emphasis */
+        }
+
+        @media screen and (max-width: 768px) {
+            .doctor h3 {
+                font-size: 1.3em;
+            }
+
+            .doctor p {
+                font-size: 1em;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1>Consultants</h1>
+    <h2>Neurosurgeons</h2>
+    <div class="container">
+        <div class="doctor">
+            <h3>Dr. Paresh Doshi</h3>
+            <p><strong>Specialization:</strong> Functional Neurosurgery, Deep Brain Stimulation, Movement Disorders
+                Surgery
+            </p>
+            <p><strong>Hospital:</strong> Jaslok Hospital</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. Sanjay Mongia</h3>
+            <p><strong>Specialization:</strong> Brain Tumors, Vascular Disorders, Functional Disorders</p>
+            <p><strong>Hospital:</strong> Lilavati Hospital</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. Sandeep Vaishya</h3>
+            <p><strong>Specialization:</strong> Brachial Plexus Surgery, Gamma Knife Surgery, Minimally Invasive Brain
+                and
+                Spine Surgery</p>
+            <p><strong>Hospital:</strong> FMRI Hospital, Gurgaon</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. Suresh Sankhla</h3>
+            <p><strong>Specialization:</strong> Endoscopic Brain Surgery, Skull Base Surgery, Pediatric Neurosurgery</p>
+            <p><strong>Hospital:</strong> Gleneagles Global Hospital</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. Aditya Gupta</h3>
+            <p><strong>Specialization:</strong> Movement Disorders, Epilepsy, Brachial Plexus Injury, Spine Surgery</p>
+            <p><strong>Hospital:</strong> Artemis Hospital</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. Gurneet Singh Sawhney</h3>
+            <p><strong>Specialization:</strong> Brain Surgery, Spine Surgery, Deep Brain Stimulation, Vascular
+                Neurosurgery
+            </p>
+            <p><strong>Hospital:</strong> Fortis Hiranandani Hospital, Vashi</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. Sudheer Tyagi</h3>
+            <p><strong>Specialization:</strong> Brain Tumors, Skull Base Tumors, Epilepsy Surgery</p>
+            <p><strong>Hospital:</strong> Indraprastha Apollo Hospital</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. Ajay Bajaj</h3>
+            <p><strong>Specialization:</strong> Spine Surgery, Minimally Invasive Spine and Brain Surgery</p>
+            <p><strong>Hospital:</strong> Wockhardt Hospital, South Mumbai</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. Rana Patir</h3>
+            <p><strong>Specialization:</strong> Brain Tumor Surgery, Epilepsy Surgery, Skull Base Surgery</p>
+            <p><strong>Hospital:</strong> FMRI Hospital, Gurgaon</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. Arun Saroha</h3>
+            <p><strong>Specialization:</strong> Brain and Spine Surgeries, Pediatric Neurosurgery</p>
+            <p><strong>Hospital:</strong> Max Hospital, Saket, New Delhi</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. S.K. Rajan</h3>
+            <p><strong>Specialization:</strong> Spine Surgery, Minimally Invasive Spine Surgery</p>
+            <p><strong>Hospital:</strong> Artemis Hospital, Gurgaon</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. Arjun Srivatsa</h3>
+            <p><strong>Specialization:</strong> Minimally Invasive Neurosurgery, Spine Surgery</p>
+            <p><strong>Hospital:</strong> Manipal Hospital, Bangalore</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. Bipin Walia</h3>
+            <p><strong>Specialization:</strong> Brain and Spine Surgery, Endoscopic Neurosurgery</p>
+            <p><strong>Hospital:</strong> Max Healthcare</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. K. Sridhar</h3>
+            <p><strong>Specialization:</strong> Vascular, Skull Base, and Spine Surgeries</p>
+            <p><strong>Hospital:</strong> Gleneagles Global Hospital</p>
+        </div>
+        <div class="doctor">
+            <h3>Dr. R. Raghuram</h3>
+            <p><strong>Specialization:</strong> Advanced Brain and Spine Surgery, Functional Neurosurgery</p>
+            <p><strong>Hospital:</strong> Manipal Hospital, Bangalore</p>
+        </div>
+    </div>
+</body>
+
+</html>
